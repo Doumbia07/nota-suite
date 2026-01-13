@@ -24,6 +24,15 @@ Route::middleware(['auth'])->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+    Route::get('dossiers/{dossier}/cocontactants', [DossierController::class,'coContactants'])->name('dossiers.cocontactants');
+    Route::post('dossiers/{dossier}/cocontactants', [DossierController::class,'storeCoContactant'])->name('dossiers.cocontactants.store');
+
+    Route::get('dossiers/{dossier}/frais', [DossierController::class,'frais'])->name('dossiers.frais');
+    Route::post('dossiers/{dossier}/frais', [DossierController::class,'storeFrais'])->name('dossiers.frais.store');
+
+    Route::get('dossiers/{dossier}/documents', [DossierController::class,'documents'])->name('dossiers.documents');
+    Route::post('dossiers/{dossier}/documents', [DossierController::class,'storeDocument'])->name('dossiers.documents.store');
+    
     Route::resource('clients', ClientController::class);
     Route::resource('dossiers', DossierController::class);
     Route::resource('documents', DocumentController::class);
